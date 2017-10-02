@@ -1,0 +1,9 @@
+.tree-node {
+    cursor: pointer;
+}
+.tree-node-invisible {
+    visibility: hidden;
+}
+.node {
+    padding: 8px;
+}
