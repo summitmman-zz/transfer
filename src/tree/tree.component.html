@@ -1,0 +1,10 @@
+<div *ngIf='tree && tree.isVisible'>
+    <div class='node'>
+      <span class="fa tree-node" [class.fa-caret-right]='!tree.isExpand' [class.fa-caret-down]='tree.isExpand' *ngIf='tree["children"] && tree["children"].length > 0' (click)="tree.isExpand = !tree.isExpand"></span>
+      <span class="fa fa-caret-right tree-node-invisible" *ngIf='tree["children"] && tree["children"].length === 0'></span>
+      <span class="text">{{tree[display]}}</span>
+    </div>
+    <div *ngIf='tree["children"] && tree["children"].length > 0 && tree.isExpand' [ngStyle]="{'padding-left': leftPadding}">
+      <app-tree *ngFor='let child of tree["children"]' [tree]='child' [display]="display" [children]="children"></app-tree>
+    </div>
+</div>
