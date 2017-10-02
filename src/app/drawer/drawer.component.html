@@ -1,0 +1,98 @@
+<div class="header" [class.header-nofocus]="isExpanded">
+  
+    <!-- Hamburger icon -->
+    <md-icon class="hamburger"
+        [class.hidden-on-phone]="isExpanded"
+        [@hamburger-state]="isExpanded?'expanded':'collapsed'"
+        (click)="openDrawer()">
+        menu
+    </md-icon>
+    
+    <!-- Title -->
+    <span class="header-title"
+        [class.hide-header-title]="isExpanded"
+        [class.hidden-on-phone]="isSearching()">
+        CCF Admin
+    </span>
+  
+
+    <!-- More options -->
+
+        <!-- Search box -->
+        <span class="search-box"
+            [class.search-box-infocus]="isSearching()">
+            
+			<!-- Search icon inside the search box -->
+			<md-icon class="round search-hint-icon"
+				(click)="startSearch()">
+				search
+			</md-icon>
+
+          <!-- Search input box -->
+          	<input #searchElement
+				class="search"
+				[class.search-infocus]="isSearching()"
+				placeholder="Search..."
+				(focusout)="searchState='nofocus'"
+				(focusin)="searchState='infocus'">
+
+        </span>
+
+        <!-- Search icon for phones -->
+        <md-icon class="search-icon round"
+			[class.hidden-on-phone]="isSearching()"
+			(click)="startSearch()">
+			search
+        </md-icon>
+        
+        <!-- Search cancel icon only for phones -->
+        <md-icon class="cancel-search-icon round"
+			[class.hidden-on-phone]="!isSearching()"
+			(click)="cancelSearch()">
+			close
+        </md-icon>
+
+        <!-- Notification icon -->
+        <md-icon class="round"
+			[class.hidden-on-phone]="isSearching()"
+			(click)="showNotificationList()">
+			notifications
+        </md-icon>
+        
+        <!-- Logout icon -->
+        <md-icon class="round"
+			[class.hidden-on-phone]="isSearching()"
+			mdTooltip="Logout"
+			mdTooltipShowDelay="400">
+			exit_to_app
+        </md-icon>
+
+</div>
+
+<!-- Left navigation drawer -->
+<div class="drawer"
+    [class.condensed-drawer]="!isExpanded">
+
+    <!-- The handle to close the drawer -->
+    <md-icon class="collapser menu-icon"
+      	(click)="closeDrawer()">
+      	navigate_before
+    </md-icon>
+
+    <!-- Menu list inside the drawer -->
+	<app-menu 
+		class="menu-list"
+		[nodes]="menulist"
+      	[isDrawerOpened]="this.isExpanded">
+    </app-menu>
+</div>
+
+<!-- All the remaining content -->
+<div class="main-content"
+    [class.squeezed-main-content]="isExpanded"
+    [class.block-ui]="isExpanded">
+
+    <ng-content>
+      
+    </ng-content>
+</div>

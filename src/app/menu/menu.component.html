@@ -1,0 +1,71 @@
+<div *ngFor="let menu of nodes">
+    
+    <!-- Tooltip -->
+    <span [mdTooltip]="menu.label"
+        [mdTooltipDisabled]="isDrawerOpened"
+        mdTooltipPosition="right"
+        mdTooltipShowDelay="400">
+        
+        <div [routerLinkActive]="['active']">
+
+            <!-- Parent nodes -->
+            <ng-container *ngIf="menu.children; else childNodes">
+                
+                <a class="menu"
+                    (click)="onParentNodeClick(menu)">
+                    
+                    <!-- Menu icon -->
+                    <md-icon class="menu-icon"
+                        *ngIf="menu.isRoot">
+                        {{ menu.icon }}
+                    </md-icon>
+                    
+                    <!-- Menu label -->
+                    <span class="menu-label"
+                        [class.child-menu-label]="!menu.isRoot">
+                        {{ menu.label }}
+                    </span>
+                    
+                    <!-- Expand/Collapse right icon -->
+                    <md-icon [class.rotate-arrow]="menu.isItemExpanded"
+                        class="dropdown-icon">
+                        keyboard_arrow_down
+                    </md-icon>
+                </a>
+            </ng-container>
+
+            <!-- Child nodes -->
+            <ng-template #childNodes>
+                <a class="menu"
+                    [routerLink]="menu.url">
+
+                    <!-- Menu icon -->
+                    <md-icon class="menu-icon"
+                        *ngIf="menu.isRoot">
+                        {{ menu.icon }}
+                    </md-icon>
+
+                    <!-- Menu label -->
+                    <span class="menu-label"
+                        [class.child-menu-label]="!menu.isRoot">
+                        {{ menu.label }}
+                    </span>
+                </a>
+
+            </ng-template>
+
+        </div>
+
+    </span>
+
+    <!-- Show children -->
+    <div class="children children-div collapse"
+        *ngIf="menu.children"
+        [class.collapse-div]="!menu.isItemExpanded">
+        
+        <app-menu [nodes]="menu.children"
+        [isDrawerOpened]="isDrawerOpened">
+        </app-menu>
+    
+    </div>
+</div>

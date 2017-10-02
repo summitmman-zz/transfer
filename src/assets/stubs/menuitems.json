@@ -1,0 +1,28 @@
+[
+  {
+    "label": "Views",
+    "icon": "remove_red_eye",
+    "isRoot": true,
+    "children": [
+      {
+        "label": "JSON",
+        "children": [
+          {
+            "label": "Advanced JSON",
+            "url": "/advancedjson"
+          }
+        ]
+      },
+      {
+        "label": "Property",
+        "url": "/property"
+      }
+    ]
+  },
+  {
+    "label": "Store catalog",
+    "icon": "collections_bookmark",
+    "url": "/storecatalog",
+    "isRoot": true
+  }
+]

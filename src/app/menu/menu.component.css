@@ -1,0 +1,72 @@
+.menu {
+    width: 256px;
+    padding: 2px;
+    height: 48px;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+    display: flex;
+}
+
+.menu:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+.menu-label {
+    padding: 13px;
+	flex-grow: 1;
+}
+
+.child-menu-label {
+    padding-left: 56px;
+}
+
+.children {
+    /* box-shadow: inset 0px 0px 4px 0.5px rgba(0,0,0,0.2); */
+    background: rgba(0,0,0,0.03);
+    font-size: 14px !important;
+}
+
+.active {
+    background: #494E54;
+    color: #fff;
+}
+
+md-icon {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-icon {
+    color: #737373;
+}
+
+.active .menu-icon {
+    color: #fff !important;
+}
+
+.dropdown-icon {
+    color: #737373;
+    transform: scale(0.7);
+    transition: transform 0.4s;
+}
+
+.rotate-arrow {
+    transform: rotate(-180deg) scale(0.7)
+}
+
+.children-div {
+    overflow: hidden;
+    max-height: 500px;
+    transition-duration: 0.4s;
+}
+
+.collapse-div {
+     max-height: 0px !important; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
